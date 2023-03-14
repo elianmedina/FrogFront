@@ -16,7 +16,7 @@ public class MovimientoPersonaje : MonoBehaviour
 
     private Vector3 velocidad = Vector3.zero; // Bloquear la region z
     
-    private bool mirandoDerecha = true;
+    public bool mirandoDerecha = true;
 
     public float aceleracion;
 
@@ -72,6 +72,7 @@ public class MovimientoPersonaje : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        
         movimientoHorizontal = Input.GetAxisRaw("Horizontal") * velocidadMovimiento;
         input.y = Input.GetAxisRaw("Vertical");
         if (enSuelo || Time.time - ultimoTiempoEnTierra <= TiempoPermisivoCoyote){
