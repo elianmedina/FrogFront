@@ -15,7 +15,21 @@ public class ArmaPrincipal : MonoBehaviour
 
     public MovimientoPersonaje MovimientoPersonaje;
 
+    public SpriteRenderer SpritePersonaje;
+
     public GameObject Pivote;
+
+    public float dispersion;
+
+    float tiempitoParaRafaga;
+
+    float tiempoUltimoDisparo;
+
+    public float tiempoEntreDisparos;
+
+    private bool clickPresionado = false;
+    public float fireRate = 0.05f;
+    private float nextFireTime = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,11 +46,27 @@ public class ArmaPrincipal : MonoBehaviour
         targetRotation = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
         var angle = Mathf.Atan2(targetRotation.y, targetRotation.x) * Mathf.Rad2Deg;
         Arma.rotation = Quaternion.Euler(new Vector3(0,0,angle));
-        
+
+        if(tiempitoParaRafaga >= 0.3f && clickPresionado){
+                DisparoRafaga();
+            }
+        if(Input.GetKey(KeyCode.Mouse0)){
+            tiempitoParaRafaga += Time.deltaTime;
+            clickPresionado = true;
+        } else{
+            tiempitoParaRafaga = 0f;
+            clickPresionado = false;
+
+        }
 
         if(Input.GetKeyDown(KeyCode.Mouse0)){
+            
             Disparo_Pium_Pium();
         }
+            
+
+        
+        
 
     if(MovimientoPersonaje.mirandoDerecha == false){
         
@@ -54,10 +84,30 @@ public class ArmaPrincipal : MonoBehaviour
        
     }
     void Disparo_Pium_Pium(){
-        var proyectilInstanciado = Instantiate (Proyectil, Arma.position, transform.rotation);
+        
+        
+        GameObject proyectilInstanciado = Instantiate (Proyectil, Arma.position, transform.rotation) as GameObject;
         targetRotation.z = 0;
         objetivo = (targetRotation - transform.position).normalized;
         proyectilInstanciado.GetComponent<Rigidbody2D>().AddForce(objetivo * velocidadProyectil, ForceMode2D.Impulse);
+        
+    
+        
+    }
+
+    void DisparoRafaga(){
+        if (Time.time >= nextFireTime){
+        GameObject proyectilInstanciado = Instantiate (Proyectil, Arma.position, transform.rotation) as GameObject;
+        var angle = Mathf.Atan2(targetRotation.y, targetRotation.x) * Mathf.Rad2Deg;
+        targetRotation.z = 0;
+        Vector2 dispersionVector = Quaternion.AngleAxis(Random.Range(-dispersion, dispersion), Vector3.forward) * objetivo;
+        objetivo = (targetRotation - transform.position).normalized;
+        proyectilInstanciado.GetComponent<Rigidbody2D>().AddForce(dispersionVector * velocidadProyectil, ForceMode2D.Impulse);
+        nextFireTime = Time.time + fireRate;
+        }
+        
+        
+        
     }
 }
 

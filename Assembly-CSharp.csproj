@@ -39,8 +39,9 @@
      <Compile Include="Assets\Scripts\PlataformaUnSentido.cs" />
      <Compile Include="Assets\Scripts\MovimientoPersonaje.cs" />
      <Compile Include="Assets\Scripts\GanchoLengua.cs" />
-     <Compile Include="Assets\Scripts\ArmaPrincipal.cs" />
      <Compile Include="Assets\Scripts\SeguirAUnObjeto.cs" />
+     <Compile Include="Assets\Scripts\BalaArmaPrincipal.cs" />
+     <Compile Include="Assets\Scripts\ArmaPrincipal.cs" />
     <Reference Include="UnityEngine">
         <HintPath>D:\Unity\2021.3.7f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

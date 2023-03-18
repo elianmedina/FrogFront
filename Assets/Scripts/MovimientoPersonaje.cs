@@ -27,6 +27,8 @@ public class MovimientoPersonaje : MonoBehaviour
 
     // Parte para el Salto:
     [Header("Salto")]
+
+    bool haSaltado = false;
     public float fuerzaDeSalto;
 
     public float fuerzaCaida;
@@ -53,6 +55,8 @@ public class MovimientoPersonaje : MonoBehaviour
 
     public float doubleTapTime = 0.2f; // tiempo máximo permitido entre dos pulsaciones para considerarlo doble tap
     public float delayTime = 1f;
+
+    private float delayTimeJump = 0.2f;
     private float lastTapTime = 0f;
     private bool waitingForDoubleTap = false;
     private float lastPressTime = 0f;
@@ -76,10 +80,13 @@ public class MovimientoPersonaje : MonoBehaviour
         movimientoHorizontal = Input.GetAxisRaw("Horizontal") * velocidadMovimiento;
         input.y = Input.GetAxisRaw("Vertical");
         if (enSuelo || Time.time - ultimoTiempoEnTierra <= TiempoPermisivoCoyote){
-            if(Input.GetButtonDown("Jump")){
+            if(Input.GetButtonDown("Jump") && !EstaSaltando){
             if(input.y >= 0){
                 EstaSaltando = true;
-                RealizarSalto();
+                if (Time.time - lastPressTime > delayTimeJump){
+                    RealizarSalto();
+                }
+                
             } else {
                 DesactivarPlataformas();
             }
@@ -165,6 +172,12 @@ public class MovimientoPersonaje : MonoBehaviour
         EstaSaltando = false;
     }
 
+    void OnCollisionEnter(Collision collision){
+    if(collision.gameObject){
+        haSaltado = false;
+    }
+}
+
     private void LogicaMovimiento(float mover){
         // Moverse Horizontalmente
         float velocidadObjetivo = movimientoHorizontal;
@@ -229,6 +242,7 @@ public class MovimientoPersonaje : MonoBehaviour
 
 
     private void RealizarSalto(){
+        haSaltado = true;
         rgb2D.AddForce(Vector2.up * fuerzaDeSalto, ForceMode2D.Impulse);
         inputSaltoSoltado = false;
 
