@@ -172,11 +172,18 @@ public class MovimientoPersonaje : MonoBehaviour
         EstaSaltando = false;
     }
 
-    void OnCollisionEnter(Collision collision){
+    private void OnCollisionEnter2D(Collision2D collision){
     if(collision.gameObject){
         haSaltado = false;
     }
-}
+
+    if (collision.gameObject.tag == "PlataforMovil") // Aquí puedes cambiar la etiqueta para que se destruya la caja con otro objeto
+        {
+            transform.parent = collision.collider.transform;
+        } else{
+            transform.parent = null;
+        }
+    }
 
     private void LogicaMovimiento(float mover){
         // Moverse Horizontalmente
