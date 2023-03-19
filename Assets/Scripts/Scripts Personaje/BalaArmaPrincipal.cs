@@ -8,6 +8,9 @@ public class BalaArmaPrincipal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject objetoAIgnorar = GameObject.FindGameObjectWithTag("Player");
+        BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
+        Physics2D.IgnoreCollision(boxCollider, objetoAIgnorar.GetComponent<BoxCollider2D>());
         Destroy(gameObject, 1f);
     }
 
@@ -23,12 +26,10 @@ public class BalaArmaPrincipal : MonoBehaviour
             Destroy(gameObject);
         }
         
+        
+        
 
-        if (other.gameObject.CompareTag("Player"))
-        {
-            // Ignorar colisión con el objeto que tenga el tag "Player"
-            Physics.IgnoreCollision(other.GetComponent<Collider>(), GetComponent<Collider>());
-        }
+        
     }
 
     
