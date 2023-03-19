@@ -21,7 +21,7 @@ public class BalaArmaPrincipal : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-         if ((capaPlataforma.value & (1 << other.gameObject.layer)) != 0 )
+         if ((capaPlataforma.value & (1 << other.gameObject.layer)) != 0   && (!other.CompareTag("PlataformaUnSentido")))
         {
             Destroy(gameObject);
         }

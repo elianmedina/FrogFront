@@ -374,11 +374,14 @@
 "Assets/Scripts/Objetos/DestruirCaja.cs"
 "Assets/Scripts/Objetos/PedazoDesaparece.cs"
 "Assets/Scripts/Objetos/SeguirAUnObjeto.cs"
+"Assets/Scripts/PlataformaCae.cs"
+"Assets/Scripts/PlataformaMovil.cs"
 "Assets/Scripts/PlataformaUnSentido.cs"
 "Assets/Scripts/Scripts Personaje/ArmaPrincipal.cs"
 "Assets/Scripts/Scripts Personaje/BalaArmaPrincipal.cs"
 "Assets/Scripts/Scripts Personaje/GanchoLengua.cs"
 "Assets/Scripts/Scripts Personaje/MovimientoPersonaje.cs"
+"Assets/Scripts/Trampolin.cs"
 -langversion:9.0
 
 /deterministic

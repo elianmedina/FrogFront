@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ProyectilAk
   - Caja
+  - PlataformaUnSentido
+  - PlataforMovil
   layers:
   - Default
   - TransparentFX

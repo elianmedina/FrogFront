@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Objetos\PedazoDesaparece.cs" />
      <Compile Include="Assets\Scripts\Objetos\DestruirCaja.cs" />
      <Compile Include="Assets\Scripts\PlataformaUnSentido.cs" />
      <Compile Include="Assets\Scripts\Scripts Personaje\MovimientoPersonaje.cs" />
@@ -43,7 +44,9 @@
      <Compile Include="Assets\Scripts\Objetos\SeguirAUnObjeto.cs" />
      <Compile Include="Assets\Scripts\Scripts Personaje\BalaArmaPrincipal.cs" />
      <Compile Include="Assets\Scripts\Scripts Personaje\ArmaPrincipal.cs" />
-     <Compile Include="Assets\Scripts\Objetos\PedazoDesaparece.cs" />
+     <Compile Include="Assets\Scripts\PlataformaCae.cs" />
+     <Compile Include="Assets\Scripts\Trampolin.cs" />
+     <Compile Include="Assets\Scripts\PlataformaMovil.cs" />
     <Reference Include="UnityEngine">
         <HintPath>D:\Unity\2021.3.7f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
