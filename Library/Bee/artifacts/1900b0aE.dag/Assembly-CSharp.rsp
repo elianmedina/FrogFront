@@ -378,6 +378,7 @@
 "Assets/Scripts/PlataformaMovil.cs"
 "Assets/Scripts/PlataformaUnSentido.cs"
 "Assets/Scripts/Scripts Camara/CameraController.cs"
+"Assets/Scripts/Scripts Camara/RoomControl.cs"
 "Assets/Scripts/Scripts Personaje/ArmaPrincipal.cs"
 "Assets/Scripts/Scripts Personaje/BalaArmaPrincipal.cs"
 "Assets/Scripts/Scripts Personaje/GanchoLengua.cs"

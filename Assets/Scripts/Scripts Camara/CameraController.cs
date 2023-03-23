@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
 
 
     [Range(-5,5)]
-    public float minModX, maxModX, minModY, maxModY;
+    public float minModX = 4.51f, maxModX = -5f, minModY= 5f, maxModY= -5f;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -22,6 +22,15 @@ public class CameraController : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    private void Start()
+    {
+        //player = PlayerController.instance.gameObject.transform;
+
+        ActiveRoom = player;
+
+        transform.position = new Vector3(player.position.x, player.position.y, -1);
     }
     // Update is called once per frame
     void Update()
