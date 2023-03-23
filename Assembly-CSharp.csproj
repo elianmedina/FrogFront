@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Trampolin.cs" />
     <Compile Include="Assets\Scripts\Scripts Personaje\ArmaPrincipal.cs" />
     <Compile Include="Assets\Scripts\Scripts Camara\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Scripts Camara\RoomControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
