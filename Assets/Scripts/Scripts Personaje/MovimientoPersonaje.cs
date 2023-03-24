@@ -43,6 +43,8 @@ public class MovimientoPersonaje : MonoBehaviour
 
     public bool enSuelo;
 
+    
+
     public bool EstaSaltando;
 
     public double TiempoPermisivoCoyote;
@@ -76,6 +78,7 @@ public class MovimientoPersonaje : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        
         
         movimientoHorizontal = Input.GetAxisRaw("Horizontal") * velocidadMovimiento;
         input.y = Input.GetAxisRaw("Vertical");
@@ -177,12 +180,27 @@ public class MovimientoPersonaje : MonoBehaviour
         haSaltado = false;
     }
 
-    if (collision.gameObject.tag == "PlataforMovil") // Aquí puedes cambiar la etiqueta para que se destruya la caja con otro objeto
+    
+    
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "PlataforMovil") // Aquí puedes cambiar la etiqueta para que se destruya la caja con otro objeto
         {
-            transform.parent = collision.collider.transform;
+            transform.parent = other.transform;
+           
         } else{
             transform.parent = null;
+            
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.gameObject.tag == "PlataforMovil") // Aquí puedes cambiar la etiqueta para que se destruya la caja con otro objeto
+        {
+            transform.parent = null;
+            
+        } 
     }
 
     private void LogicaMovimiento(float mover){
