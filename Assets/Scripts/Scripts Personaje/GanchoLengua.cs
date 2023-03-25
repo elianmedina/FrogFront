@@ -35,7 +35,7 @@ public class GanchoLengua : MonoBehaviour
             Vector2 posicionMouse = (Vector2) mainCamera.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(transform.position, posicionMouse - (Vector2)transform.position, 100f, CapaEnganche);
            if (hit.collider != null){
-                Vector2 direccionLengua = ((Vector2) hit.point - (Vector2)transform.position).normalized;
+                Vector2 direccionLengua = (hit.point - (Vector2)transform.position).normalized;
 
                 // Aplica una fuerza en la dirección de la lengua
                 Rigidbody2D rigidbodyPersonaje = GetComponent<Rigidbody2D>();

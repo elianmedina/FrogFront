@@ -193,7 +193,14 @@ public class MovimientoPersonaje : MonoBehaviour
             transform.parent = null;
             
         }
+        
+         
     }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        
+    }
+    
 
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.tag == "PlataforMovil") // Aquí puedes cambiar la etiqueta para que se destruya la caja con otro objeto
@@ -201,6 +208,7 @@ public class MovimientoPersonaje : MonoBehaviour
             transform.parent = null;
             
         } 
+        
     }
 
     private void LogicaMovimiento(float mover){
