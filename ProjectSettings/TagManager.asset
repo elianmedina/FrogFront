@@ -9,6 +9,7 @@ TagManager:
   - PlataformaUnSentido
   - PlataforMovil
   - liquido
+  - pegajoso
   layers:
   - Default
   - TransparentFX
