@@ -67,12 +67,25 @@ public class MovimientoPersonaje : MonoBehaviour
     [Range(0,0.1f)] public float multiplicadorCancelarSalto;
     [SerializeField] private float multiplicadorGravedad;
     private float escalaGravedad;
+
+    float multiplicadorInicialGravedad;
+
+    float escalaGravedadInicial;
+
+    public PhysicsMaterial2D materialPersonaje;
+    float velocidadMovimientoInicial;
+    float fuerzaSaltoInicial;
     
     
     private void Start()
     {
        rgb2D = GetComponent<Rigidbody2D>();
        escalaGravedad = rgb2D.gravityScale;
+       velocidadMovimientoInicial = velocidadMovimiento;
+       fuerzaSaltoInicial = fuerzaDeSalto;
+       escalaGravedadInicial = escalaGravedad;
+       multiplicadorInicialGravedad = multiplicadorGravedad;
+       
     }
 
     // Update is called once per frame
@@ -193,12 +206,32 @@ public class MovimientoPersonaje : MonoBehaviour
             transform.parent = null;
             
         }
+
+        if (other.gameObject.tag == "pegajoso") // Aquí puedes cambiar la etiqueta para que se destruya la caja con otro objeto
+        {
+            
+           materialPersonaje.friction = 80f;
+           velocidadMovimiento -= 4;
+           fuerzaDeSalto -= 4;
+           rgb2D.gravityScale = 0.1f;
+           multiplicadorGravedad = 0.1f;
+           rgb2D.velocity = new Vector2(rgb2D.velocity.x, rgb2D.velocity.y * 0.3f);
         
+        } 
          
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        
+        if (other.gameObject.tag == "pegajoso") // Aquí puedes cambiar la etiqueta para que se destruya la caja con otro objeto
+        {
+            
+           materialPersonaje.friction = 40f;
+           rgb2D.gravityScale = 0.1f;
+           multiplicadorGravedad = 0.009f;
+
+
+           
+        }
     }
     
 
@@ -208,6 +241,16 @@ public class MovimientoPersonaje : MonoBehaviour
             transform.parent = null;
             
         } 
+
+        if (other.gameObject.tag == "pegajoso") // Aquí puedes cambiar la etiqueta para que se destruya la caja con otro objeto
+        {
+            
+           materialPersonaje.friction = 0f;
+           velocidadMovimiento = velocidadMovimientoInicial;
+           fuerzaDeSalto = fuerzaSaltoInicial;
+           rgb2D.gravityScale = escalaGravedadInicial;
+           multiplicadorGravedad = multiplicadorInicialGravedad;
+        }
         
     }
 
