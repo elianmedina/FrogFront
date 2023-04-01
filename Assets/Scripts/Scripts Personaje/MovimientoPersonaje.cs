@@ -58,7 +58,7 @@ public class MovimientoPersonaje : MonoBehaviour
     public float doubleTapTime = 0.2f; // tiempo máximo permitido entre dos pulsaciones para considerarlo doble tap
     public float delayTime = 1f;
 
-    private float delayTimeJump = 0.2f;
+    private float delayTimeJump = 0.25f;
     private float lastTapTime = 0f;
     private bool waitingForDoubleTap = false;
     private float lastPressTime = 0f;
@@ -75,6 +75,8 @@ public class MovimientoPersonaje : MonoBehaviour
     public PhysicsMaterial2D materialPersonaje;
     float velocidadMovimientoInicial;
     float fuerzaSaltoInicial;
+
+    [SerializeField] bool estaEnAgua;
     
     
     private void Start()
@@ -95,8 +97,8 @@ public class MovimientoPersonaje : MonoBehaviour
         
         movimientoHorizontal = Input.GetAxisRaw("Horizontal") * velocidadMovimiento;
         input.y = Input.GetAxisRaw("Vertical");
-        if (enSuelo || Time.time - ultimoTiempoEnTierra <= TiempoPermisivoCoyote){
-            if(Input.GetButtonDown("Jump") && !EstaSaltando){
+        if (enSuelo || Time.time - ultimoTiempoEnTierra <= TiempoPermisivoCoyote || estaEnAgua){
+            if(Input.GetButtonDown("Jump") && !EstaSaltando || Input.GetButtonDown("Jump") && estaEnAgua){
             if(input.y >= 0){
                 EstaSaltando = true;
                 if (Time.time - lastPressTime > delayTimeJump){
@@ -218,6 +220,11 @@ public class MovimientoPersonaje : MonoBehaviour
            rgb2D.velocity = new Vector2(rgb2D.velocity.x, rgb2D.velocity.y * 0.3f);
         
         } 
+
+        if (other.gameObject.tag == "liquido"){
+            estaEnAgua = true;
+            fuerzaDeSalto -= 4;
+        }
          
     }
 
@@ -231,6 +238,11 @@ public class MovimientoPersonaje : MonoBehaviour
 
 
            
+        }
+
+        if (other.gameObject.tag == "liquido"){
+            estaEnAgua = true;
+            
         }
     }
     
@@ -250,6 +262,11 @@ public class MovimientoPersonaje : MonoBehaviour
            fuerzaDeSalto = fuerzaSaltoInicial;
            rgb2D.gravityScale = escalaGravedadInicial;
            multiplicadorGravedad = multiplicadorInicialGravedad;
+        }
+
+        if (other.gameObject.tag == "liquido"){
+            estaEnAgua = false;
+            fuerzaDeSalto = fuerzaSaltoInicial;
         }
         
     }

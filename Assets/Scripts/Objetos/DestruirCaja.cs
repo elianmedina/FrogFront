@@ -8,7 +8,7 @@ public class DestruirCaja : MonoBehaviour
 
     public int contadorBalas;
 
-    int balasColisionadasActualmente = 0;
+    public int balasColisionadasActualmente = 0;
     void Start()
     {
         
