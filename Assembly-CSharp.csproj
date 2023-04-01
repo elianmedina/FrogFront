@@ -49,9 +49,14 @@
      <Compile Include="Assets\Scripts\Peligros ambiente\DisparadorParabolico.cs" />
      <Compile Include="Assets\Scripts\Objetos\SeguirAUnObjeto.cs" />
      <Compile Include="Assets\Scripts\Scripts Personaje\BalaArmaPrincipal.cs" />
+     <Compile Include="Assets\Scripts\Objetos\akVoladora.cs" />
      <Compile Include="Assets\Scripts\Trampolin.cs" />
      <Compile Include="Assets\Scripts\Scripts Personaje\ArmaPrincipal.cs" />
      <Compile Include="Assets\Scripts\Scripts Camara\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Scripts Personaje\Machete.cs" />
+     <Compile Include="Assets\Scripts\Scripts Personaje\CoheteLanzado.cs" />
+     <Compile Include="Assets\Scripts\Scripts Personaje\ArmaEspecial.cs" />
+     <Compile Include="Assets\Scripts\Scripts Personaje\Escopeta.cs" />
     <Reference Include="UnityEngine">
         <HintPath>D:\Unity\2021.3.7f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
