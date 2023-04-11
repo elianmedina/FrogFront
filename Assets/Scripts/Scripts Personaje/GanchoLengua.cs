@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GanchoLengua : MonoBehaviour
 {
@@ -18,7 +19,14 @@ public class GanchoLengua : MonoBehaviour
     public LayerMask CapaEnganche;
 
     public float tiempoReutilizacion = 3f; // Tiempo de reutilización en segundos
-    private float tiempoUltimoEnganche = -1f; // Tiempo en el que se realizó el último enganche
+    private float tiempoUltimoEnganche = 0f; // Tiempo en el que se realizó el último enganche
+
+    public Slider sliderLengua;
+    private float cdLengua = 3f;
+    private float cdLenguaActual = 0.0f;
+
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +39,8 @@ public class GanchoLengua : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        
         if (Time.time > tiempoUltimoEnganche + tiempoReutilizacion && Input.GetMouseButtonDown(1)){
             Vector2 posicionMouse = (Vector2) mainCamera.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(transform.position, posicionMouse - (Vector2)transform.position, 100f, CapaEnganche);
@@ -48,11 +58,17 @@ public class GanchoLengua : MonoBehaviour
                 DisparoCuerda.enabled = true;
                 tiempoUltimoEnganche = Time.time;
                 Invoke("DesactivarCuerda", 0.15f);
-                
-                
+                cdLenguaActual = 0.0f;
             } 
-        } else if (Input.GetKeyUp(KeyCode.Mouse1)){
+        } else {
+            cdLenguaActual += Time.deltaTime;
+            cdLenguaActual = Mathf.Clamp(cdLenguaActual, 0.0f, cdLengua);
+            if (Input.GetKeyUp(KeyCode.Mouse1)){
             DisparoCuerda.enabled = false;
+        }
+        sliderLengua.value = cdLenguaActual / cdLengua;
+        
+        
             
             
 
