@@ -77,6 +77,8 @@ public class MovimientoPersonaje : MonoBehaviour
     float fuerzaSaltoInicial;
 
     [SerializeField] bool estaEnAgua;
+
+    public int vidasPersonaje = 3;
     
     
     private void Start()

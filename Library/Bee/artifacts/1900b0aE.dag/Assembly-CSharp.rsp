@@ -393,6 +393,7 @@
 "Assets/Scripts/Scripts Personaje/MovimientoPersonaje.cs"
 "Assets/Scripts/Trampolin.cs"
 "Assets/Scripts/UI/ArmaActual.cs"
+"Assets/Scripts/UI/LogicaCorazones.cs"
 -langversion:9.0
 
 /deterministic
