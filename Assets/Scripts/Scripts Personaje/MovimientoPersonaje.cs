@@ -24,6 +24,8 @@ public class MovimientoPersonaje : MonoBehaviour
 
     public Vector2 input;
 
+    public float Healt;
+    public bool isInmune;
 
     // Parte para el Salto:
     [Header("Salto")]
@@ -43,7 +45,8 @@ public class MovimientoPersonaje : MonoBehaviour
 
     public bool enSuelo;
 
-    
+    public float knockBackForceX;
+    public float knockBackForceY;
 
     public bool EstaSaltando;
 
@@ -95,8 +98,10 @@ public class MovimientoPersonaje : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
-        
+        //check de corazones
+        HealthCheck();
+
+
         movimientoHorizontal = Input.GetAxisRaw("Horizontal") * velocidadMovimiento;
         input.y = Input.GetAxisRaw("Vertical");
         if (enSuelo || Time.time - ultimoTiempoEnTierra <= TiempoPermisivoCoyote || estaEnAgua){
@@ -202,6 +207,26 @@ public class MovimientoPersonaje : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+
+        if (other.CompareTag("Enemy") && !isInmune)
+        {
+            Healt -= other.GetComponent<Enemy>().DamageToGive;
+            Destroy(other.gameObject);
+            StartCoroutine(Inmunity());
+
+            if (other.transform.position.x > transform.position.x)
+            {
+                rgb2D.AddForce(new Vector2(-knockBackForceX, knockBackForceY), ForceMode2D.Force);
+
+            }
+            else
+            {
+                rgb2D.AddForce(new Vector2(knockBackForceX, knockBackForceY), ForceMode2D.Force);
+            }
+
+        }
+
+
         if (other.gameObject.tag == "PlataforMovil") // Aquí puedes cambiar la etiqueta para que se destruya la caja con otro objeto
         {
             transform.parent = other.transform;
@@ -227,9 +252,19 @@ public class MovimientoPersonaje : MonoBehaviour
             estaEnAgua = true;
             fuerzaDeSalto -= 4;
         }
-         
+        else
+        {
+            return;
+        }
+        
     }
 
+    IEnumerator Inmunity()
+    {
+        isInmune = true;
+        yield return new WaitForSeconds(1f);
+        isInmune = false;
+    }
     private void OnTriggerStay2D(Collider2D other) {
         if (other.gameObject.tag == "pegajoso") // Aquí puedes cambiar la etiqueta para que se destruya la caja con otro objeto
         {
@@ -341,5 +376,29 @@ public class MovimientoPersonaje : MonoBehaviour
         rgb2D.AddForce(Vector2.up * fuerzaDeSalto, ForceMode2D.Impulse);
         inputSaltoSoltado = false;
 
+    }
+
+    public void HealthCheck()
+    {
+        if(Healt == 60f) // a cambiar
+        {
+            vidasPersonaje = 3;
+        }
+
+        if((Healt <= 40f) && (Healt >= 20f))
+        {
+            vidasPersonaje = 2;
+        }
+
+        if ((Healt <= 20f) && (Healt >= 1f))
+        {
+            vidasPersonaje = 1;
+        }
+
+        if(Healt <= 0f)
+        {
+            vidasPersonaje = 0;
+            //AQUI MUERE
+        }
     }
 }
