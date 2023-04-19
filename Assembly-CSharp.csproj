@@ -63,12 +63,16 @@
     <Compile Include="Assets\Scripts\Objetos\DestruirCaja.cs" />
     <Compile Include="Assets\Scripts\Scripts Personaje\Escopeta.cs" />
     <Compile Include="Assets\Scripts\PlataformaCae.cs" />
+    <Compile Include="Assets\Scripts\Scripst Enemies\PlayerDetect.cs" />
     <Compile Include="Assets\Scripts\PlataformaUnSentido.cs" />
+    <Compile Include="Assets\Scripts\Scripst Enemies\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Scripts Personaje\MovimientoPersonaje.cs" />
     <Compile Include="Assets\Scripts\PlataformaMovil.cs" />
     <Compile Include="Assets\Scripts\Scripts Personaje\GanchoLengua.cs" />
     <Compile Include="Assets\Scripts\UI\LogicaCorazones.cs" />
+    <Compile Include="Assets\Scripts\Scripst Enemies\Enemy.cs" />
     <Compile Include="Assets\Scripts\Peligros ambiente\EspinaCayendo.cs" />
+    <Compile Include="Assets\Scripts\Scripst Enemies\EnemyProjectile.cs" />
     <Compile Include="Assets\Scripts\Peligros ambiente\DisparadorRecto.cs" />
     <Compile Include="Assets\Scripts\Peligros ambiente\DisparadorParabolico.cs" />
     <Compile Include="Assets\Scripts\Objetos\SeguirAUnObjeto.cs" />
@@ -79,11 +83,7 @@
     <Compile Include="Assets\Scripts\Scripts Personaje\ArmaPrincipal.cs" />
     <Compile Include="Assets\Scripts\Scripts Camara\CameraController.cs" />
     <Compile Include="Assets\Scripts\UI\ArmaActual.cs" />
-    <Compile Include="Assets\Scripts\Scripst Enemies\Enemy.cs" />
-    <Compile Include="Assets\Scripts\Scripst Enemies\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Scripst Enemies\EnemyMovements.cs" />
-    <Compile Include="Assets\Scripts\Scripst Enemies\EnemyProjectile.cs" />
-    <Compile Include="Assets\Scripts\Scripst Enemies\PlayerDetect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
