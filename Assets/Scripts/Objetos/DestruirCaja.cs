@@ -9,6 +9,9 @@ public class DestruirCaja : MonoBehaviour
     public int contadorBalas;
 
     public int balasColisionadasActualmente = 0;
+
+
+    public bool tienePedazos = true;
     void Start()
     {
         
@@ -35,8 +38,8 @@ public class DestruirCaja : MonoBehaviour
 
             if(balasColisionadasActualmente >= contadorBalas){
                 Destroy(gameObject);
-
-                for (int i = 0; i < 3; i++) // Cambia el número para generar más o menos fragmentos de caja
+                if(tienePedazos){
+                    for (int i = 0; i < 3; i++) // Cambia el número para generar más o menos fragmentos de caja
                 {
                     
                     GameObject fragmento = Instantiate(fragmentoPrefab[Random.Range(0,fragmentoPrefab.Length)], transform.position, Quaternion.identity);
@@ -52,6 +55,9 @@ public class DestruirCaja : MonoBehaviour
                     rb2d.AddForce(direccion * 200f);
 
                 }
+                }
+
+                
             }
             
             

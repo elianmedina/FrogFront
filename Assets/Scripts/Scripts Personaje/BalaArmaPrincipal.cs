@@ -25,11 +25,17 @@ public class BalaArmaPrincipal : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        
         
         
         
 
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+
     }
 
     

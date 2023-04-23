@@ -82,6 +82,8 @@ public class MovimientoPersonaje : MonoBehaviour
     [SerializeField] bool estaEnAgua;
 
     public int vidasPersonaje = 3;
+
+    bool EnPegajoso;
     
     
     private void Start()
@@ -100,6 +102,20 @@ public class MovimientoPersonaje : MonoBehaviour
     {
         //check de corazones
         HealthCheck();
+
+
+        if(EnPegajoso){
+           materialPersonaje.friction = 40f;
+           rgb2D.gravityScale = 0.01f;
+           multiplicadorGravedad = 0.009f;
+
+        } else{
+           materialPersonaje.friction = 0f;
+           velocidadMovimiento = velocidadMovimientoInicial;
+           fuerzaDeSalto = fuerzaSaltoInicial;
+           rgb2D.gravityScale = escalaGravedadInicial;
+           multiplicadorGravedad = multiplicadorInicialGravedad;
+        }
 
 
         movimientoHorizontal = Input.GetAxisRaw("Horizontal") * velocidadMovimiento;
@@ -239,12 +255,12 @@ public class MovimientoPersonaje : MonoBehaviour
         if (other.gameObject.tag == "pegajoso") // Aquí puedes cambiar la etiqueta para que se destruya la caja con otro objeto
         {
             
-           materialPersonaje.friction = 80f;
-           velocidadMovimiento -= 4;
+           materialPersonaje.friction = 40f;
            fuerzaDeSalto -= 4;
-           rgb2D.gravityScale = 0.1f;
-           multiplicadorGravedad = 0.1f;
-           rgb2D.velocity = new Vector2(rgb2D.velocity.x, rgb2D.velocity.y * 0.3f);
+           rgb2D.gravityScale = 0.01f;
+           multiplicadorGravedad = 0.009f;
+           EnPegajoso = true;
+           rgb2D.velocity -= new Vector2(rgb2D.velocity.x, rgb2D.velocity.y * 0.3f);
         
         } 
 
@@ -268,10 +284,8 @@ public class MovimientoPersonaje : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other) {
         if (other.gameObject.tag == "pegajoso") // Aquí puedes cambiar la etiqueta para que se destruya la caja con otro objeto
         {
-            
-           materialPersonaje.friction = 40f;
-           rgb2D.gravityScale = 0.1f;
-           multiplicadorGravedad = 0.009f;
+           EnPegajoso = true;
+           
 
 
            
@@ -293,7 +307,7 @@ public class MovimientoPersonaje : MonoBehaviour
 
         if (other.gameObject.tag == "pegajoso") // Aquí puedes cambiar la etiqueta para que se destruya la caja con otro objeto
         {
-            
+           EnPegajoso = false;
            materialPersonaje.friction = 0f;
            velocidadMovimiento = velocidadMovimientoInicial;
            fuerzaDeSalto = fuerzaSaltoInicial;
