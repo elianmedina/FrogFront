@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fragmentoPrefab: []
-  contadorBalas: 5
+  contadorBalas: 6
   balasColisionadasActualmente: 0
   tienePedazos: 0
 --- !u!114 &1296083978705333391

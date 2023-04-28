@@ -401,6 +401,7 @@
 "Assets/Scripts/Scripts Personaje/ArmaEspecial.cs"
 "Assets/Scripts/Scripts Personaje/ArmaPrincipal.cs"
 "Assets/Scripts/Scripts Personaje/BalaArmaPrincipal.cs"
+"Assets/Scripts/Scripts Personaje/CAC.cs"
 "Assets/Scripts/Scripts Personaje/CoheteLanzado.cs"
 "Assets/Scripts/Scripts Personaje/Escopeta.cs"
 "Assets/Scripts/Scripts Personaje/GanchoLengua.cs"
