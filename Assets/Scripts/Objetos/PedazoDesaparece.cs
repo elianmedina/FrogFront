@@ -38,5 +38,12 @@ public class PedazoDesaparece : MonoBehaviour
             
             Destroy(gameObject);
         }
+
+    if (collision.gameObject.tag == "machete") // Aquí puedes cambiar la etiqueta para que se destruya la caja con otro objeto
+        {
+            
+            Destroy(gameObject);
+        }
     }
 }
+
