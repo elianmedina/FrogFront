@@ -13,6 +13,8 @@ TagManager:
   - Enemy
   - objetoDestructible
   - ignorarColisionProyectil
+  - machete
+  - checkpoint
   layers:
   - Default
   - TransparentFX

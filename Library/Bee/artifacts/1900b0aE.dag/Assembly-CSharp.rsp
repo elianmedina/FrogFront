@@ -374,6 +374,7 @@
 "Assets/Scripts/Objetos/akVoladora.cs"
 "Assets/Scripts/Objetos/DestruirCaja.cs"
 "Assets/Scripts/Objetos/PedazoDesaparece.cs"
+"Assets/Scripts/Objetos/PuntosRespawn.cs"
 "Assets/Scripts/Objetos/SeguirAUnObjeto.cs"
 "Assets/Scripts/Peligros ambiente/Aplastador.cs"
 "Assets/Scripts/Peligros ambiente/DisparadorCuatroDirecciones/DispAbajo.cs"
