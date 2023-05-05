@@ -26,6 +26,8 @@ public class EspinaCayendo : MonoBehaviour
     float randomNumber;
     public LayerMask capaPlataforma;
 
+    public float tiempoDestruccion = 2;
+
 
 
 
@@ -34,7 +36,7 @@ public class EspinaCayendo : MonoBehaviour
     void Start()
     {
         rgb2Espina = GetComponent<Rigidbody2D>();
-        BoxCollider2DEspina = GetComponent<BoxCollider2D>();
+        BoxCollider2D[] boxColliders = GetComponents<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -62,7 +64,7 @@ public class EspinaCayendo : MonoBehaviour
                             //Animacion
                     }
                 
-                    actualizar = Time.time + 2;
+                    actualizar = Time.time + 1.5f;
                     }
                 }
                  
@@ -79,7 +81,8 @@ public class EspinaCayendo : MonoBehaviour
 private void OnCollisionEnter2D(Collision2D other) {
     if ((capaPlataforma.value & (1 << other.gameObject.layer)) != 0 && EstaCayendo)
         {
-            Destroy(gameObject, 2f);
+            gameObject.tag = "Untagged";
+            Destroy(gameObject, tiempoDestruccion);
         }
 }
     

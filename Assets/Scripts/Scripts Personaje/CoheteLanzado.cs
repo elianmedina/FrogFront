@@ -11,18 +11,18 @@ public class CoheteLanzado : MonoBehaviour
     public Rigidbody2D rbProyectil;
 
     public Camera camara;
+
+    public float tiempoDestruccion = 3f;
     
     
     void Start()
     {
         GameObject Gameobjectcamara = GameObject.Find("Main Camera");
         camara = Gameobjectcamara.GetComponent<Camera>();
-        GameObject objetoAIgnorar = GameObject.FindGameObjectWithTag("Player");
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
         Rigidbody2D rbProyectil = GetComponent<Rigidbody2D>();
         rbProyectil.velocity *= 0.3f;
-        Physics2D.IgnoreCollision(boxCollider, objetoAIgnorar.GetComponent<BoxCollider2D>());
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, tiempoDestruccion);
         
     }
 
